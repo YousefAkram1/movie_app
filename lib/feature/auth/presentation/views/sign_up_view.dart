@@ -7,7 +7,7 @@ import '../../../../core/utils/values/app_routes.dart';
 import '../cubit/sign_up_cubit/sign_up_cubit.dart';
 import '../widgets/chip_logo_items.dart';
 import '../widgets/divider_and_or.dart';
-import '../widgets/TextAndTapedTextComponent.dart';
+import '../widgets/textAndTapedTextComponent.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../../../../core/utils/test_assets_extention/assets.dart';
@@ -137,46 +137,33 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           SizedBox(height: 12.h),
-                          RichText(
+                          TextAndTapedTextComponent(
+                            mainText:
+                                'By clicking the “sign up” button, '
+                                'you accept the terms of the ',
+                            pageText: 'Privacy Policy',
+                            onTap: () {},
                             textAlign: TextAlign.start,
-                            text: TextSpan(
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.authTextColor,
-                              ),
-                              children: [
-                                const TextSpan(
-                                  text:
-                                      'By clicking the “sign up” button, '
-                                      'you accept the terms of the ',
-                                ),
-                                TextSpan(
-                                  text: 'Privacy Policy',
-                                  style: const TextStyle(color: Colors.white),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {},
-                                ),
-                              ],
-                            ),
                           ),
+
                           SizedBox(height: 28.h),
                           DividerAndOr(),
                           SizedBox(height: 29.h),
                           ChipLogoItems(),
                           SizedBox(height: 219.h),
-                          TextAndTapedTextComponent(
-                            mainText: 'Already have an account? ',
-                            pageText: 'Sign In',
-                            onTap: () {
-                              Navigator.pushReplacementNamed(
-                                context,
-                                AppRoutes.signIn,
-                              );
-                            },
-                          ),
                         ],
                       ),
+                    ),
+                    TextAndTapedTextComponent(
+                      textAlign: TextAlign.center,
+                      mainText: 'Already have an account? ',
+                      pageText: 'Sign In',
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.signIn,
+                        );
+                      },
                     ),
                   ],
                 ),

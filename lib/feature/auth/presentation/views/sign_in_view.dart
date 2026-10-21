@@ -6,7 +6,7 @@ import '../../../../core/utils/values/app_routes.dart';
 import '../cubit/sign_in_cubit/sign_in_cubit.dart';
 import '../widgets/chip_logo_items.dart';
 import '../widgets/divider_and_or.dart';
-import '../widgets/TextAndTapedTextComponent.dart';
+import '../widgets/textAndTapedTextComponent.dart';
 import '../../../home/presentation/views/home_view.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
@@ -159,18 +159,19 @@ class _SignInState extends State<SignIn> {
                           SizedBox(height: 29.h),
                           ChipLogoItems(),
                           SizedBox(height: 219.h),
-                          TextAndTapedTextComponent(
-                            mainText: 'Don’t you have an account? ',
-                            pageText: 'Sign Up',
-                            onTap: () {
-                              Navigator.pushReplacementNamed(
-                                context,
-                                AppRoutes.signUp,
-                              );
-                            },
-                          ),
                         ],
                       ),
+                    ),
+                    TextAndTapedTextComponent(
+                      textAlign: TextAlign.center,
+                      mainText: 'Don’t you have an account? ',
+                      pageText: 'Sign Up',
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.signUp,
+                        );
+                      },
                     ),
                   ],
                 ),

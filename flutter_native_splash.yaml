@@ -1,19 +1,13 @@
 flutter_native_splash:
   color: "#EB2F3D"
-
-  image: assets/images/splash-image.png
-
-  image_android: assets/images/splash-image.png
-
-  branding: assets/images/version-image.png
+  image: assets/images/Frame-test-3.png
+  branding: assets/images/Version-test-2.png
   branding_mode: bottom
   branding_bottom_padding: 24
-
   fullscreen: true
 
   android_12:
     color: "#EB2F3D"
-    image: assets/images/Layer 2.png
-    branding: assets/images/version-image.png
-    branding_mode: bottom
-    branding_bottom_padding: 24
+    image: assets/images/Frame-test-3.png
+    icon_background_color: "#EB2F3D"
+    branding: assets/images/Version-test-2.png
