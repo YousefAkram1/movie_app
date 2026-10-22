@@ -1,3 +1,5 @@
+import 'package:injectable/injectable.dart';
+
 import '../../../../core/networking/api_constaints.dart';
 import '../../../../core/networking/base_api.dart';
 import '../models/movie_model/result.dart';
@@ -8,6 +10,7 @@ abstract class HomeRemoteDataSource {
   Future<Result> getMovieDetailsData({required int id});
 }
 
+@LazySingleton(as: HomeRemoteDataSource)
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   ApiBase apiBase;
   HomeRemoteDataSourceImpl(this.apiBase);

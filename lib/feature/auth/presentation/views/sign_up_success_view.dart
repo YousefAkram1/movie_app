@@ -61,17 +61,20 @@ class _SignUpSuccessState extends State<SignUpSuccess> {
                       ),
                       SizedBox(height: 23.h),
                       AppTextField(
+                        textInputFormatter: [],
                         hint: 'Your name',
                         controller: nameController,
                       ),
                       SizedBox(height: 9.h),
                       AppTextField(
+                        textInputFormatter: [],
                         hint: 'Your phone number',
                         controller: numberController,
                       ),
                       SizedBox(height: 9.h),
 
                       AppTextField(
+                        textInputFormatter: [],
                         hint: 'Current City/pincode',
                         controller: countryController,
                       ),

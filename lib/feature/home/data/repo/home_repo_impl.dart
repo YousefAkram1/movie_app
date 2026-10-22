@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:movie_app/feature/home/data/mapper/movie_mapper.dart';
 import '../../../../core/errors/error_handlig.dart';
 import '../../../../core/errors/failure.dart';
@@ -6,6 +7,7 @@ import '../data_resource/home_remote_data_source.dart';
 import '../../domain/entities/movie_home_details_entity.dart';
 import '../../domain/repo/home_repo.dart';
 
+@LazySingleton(as: HomeRepo)
 class HomeRepoImpl implements HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;
 

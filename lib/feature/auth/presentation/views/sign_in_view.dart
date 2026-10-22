@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -97,11 +98,15 @@ class _SignInState extends State<SignIn> {
                           ),
                           SizedBox(height: 23.h),
                           AppTextField(
+                            textInputFormatter: [],
                             hint: 'E-mail',
                             controller: emailController,
                           ),
                           SizedBox(height: 14.h),
                           AppTextField(
+                            textInputFormatter: [
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
                             secure: true,
                             keyboardType: TextInputType.numberWithOptions(),
                             hint: 'Password',
@@ -133,6 +138,8 @@ class _SignInState extends State<SignIn> {
                                   email: emailController.text,
                                   password: passwordController.text,
                                 );
+                                emailController.clear();
+                                passwordController.clear();
                               }
                             },
                             style: ButtonStyle(

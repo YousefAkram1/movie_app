@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:movie_app/injectable.dart';
 import 'core/utils/values/app_colors.dart';
 import 'feature/auth/presentation/cubit/sign_in_cubit/sign_in_cubit.dart';
 import 'feature/auth/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
@@ -19,16 +20,15 @@ import 'feature/home/presentation/cubit/search_cubit/movie_search_cubit.dart';
 import 'feature/auth/presentation/views/sign_in_view.dart';
 import 'feature/on_boarding/presentation/views/on_boarding_one.dart';
 import 'feature/on_boarding/presentation/views/on_boardin_two.dart';
-import 'injection_container.dart' as di;
 
 void main() async {
   Bloc.observer = Observer();
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting();
-  await di.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await FlutterStatusbarcolor.setStatusBarColor(AppColors.primary);
   await FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+  configerDependancy();
 
   runApp(const MovieApp());
 }
@@ -46,10 +46,10 @@ class MovieApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => di.s1<MovieListCubit>()..getMovieList(),
+              create: (context) => getit<MovieListCubit>()..getMovieList(),
             ),
-            BlocProvider(create: (context) => di.s1<MovieDetailsCubit>()),
-            BlocProvider(create: (context) => di.s1<MovieSearchCubit>()),
+            BlocProvider(create: (context) => getit<MovieDetailsCubit>()),
+            BlocProvider(create: (context) => getit<MovieSearchCubit>()),
             BlocProvider(create: (context) => SignInCubit()),
             BlocProvider(create: (context) => SignUpCubit()),
           ],

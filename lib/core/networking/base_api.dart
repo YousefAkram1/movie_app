@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import '../errors/exceptions.dart';
 import '../errors/model/error_model.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+@lazySingleton
 class ApiBase {
   final String _baseUrl = 'https://api.themoviedb.org/3/';
   final Map<String, String> headers = {

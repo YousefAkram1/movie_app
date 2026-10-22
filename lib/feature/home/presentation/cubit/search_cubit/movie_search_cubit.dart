@@ -1,11 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../domain/entities/movie_home_details_entity.dart';
 import '../../../domain/use_cases/search_movie_use_case.dart';
 
 part 'movie_search_state.dart';
 
+@injectable
 class MovieSearchCubit extends Cubit<MovieSearchState> {
   MovieSearchCubit(this.searchMovieUseCase) : super(MovieSearchInitial());
   final SearchMovieUseCase searchMovieUseCase;

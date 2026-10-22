@@ -28,32 +28,35 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bloc: ^9.2.1
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
   dio: ^5.11.1
   easy_localization: ^3.0.8
   equatable: ^3.0.0
+  firebase_auth: ^7.0.0
+  firebase_core: ^5.0.0
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
-  bloc: ^9.2.1
   flutter_native_splash: ^2.4.7
   flutter_screenutil: ^5.9.3
+  flutter_statusbarcolor_ns: ^0.6.0
   flutter_svg: ^2.3.0
   get_it: ^9.3.0
+  injectable: ^2.5.0
+  intl: ^0.20.2
   pretty_dio_logger: ^1.4.0
   shared_preferences: ^2.5.3
-  intl: ^0.20.2
-  firebase_core: ^5.0.0
-  firebase_auth: ^7.0.0
-  flutter_statusbarcolor_ns: ^0.6.0
   top_snackbar_flutter: ^3.4.0
 
 dev_dependencies:
-  flutter_launcher_icons: "^0.14.4"
+  build_runner: ^2.4.15
+  flutter_launcher_icons: ^0.14.4
   flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
+  injectable_generator: ^2.7.0
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true

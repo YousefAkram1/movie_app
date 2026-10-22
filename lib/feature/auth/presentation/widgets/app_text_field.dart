@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/values/app_colors.dart';
 
@@ -10,17 +11,24 @@ class AppTextField extends StatelessWidget {
     required this.controller,
     this.keyboardType,
     this.secure,
+    required this.textInputFormatter,
   });
   final String hint;
   final Widget? suffixIcon;
   final TextEditingController controller;
   final TextInputType? keyboardType;
   final bool? secure;
+  final List<TextInputFormatter> textInputFormatter;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textInputAction: TextInputAction.next,
+      cursorColor: Colors.amber,
+      cursorRadius: Radius.circular(50),
+      cursorErrorColor: Colors.red,
       obscureText: secure == null ? false : secure!,
+      obscuringCharacter: '*',
       keyboardType: keyboardType,
       style: TextStyle(color: Colors.white),
       controller: controller,
@@ -31,6 +39,7 @@ class AppTextField extends StatelessWidget {
           return null;
         }
       },
+      inputFormatters: textInputFormatter,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.only(left: 15.w, top: 14.w, bottom: 14.w),
         suffixIcon: suffixIcon,
