@@ -39,6 +39,20 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+     flavorDimensions += "default"
+    productFlavors {
+        create("development") {
+            dimension = "default"
+            applicationIdSuffix = ".dev"
+            resValue("string", "app_name", "movie_app dev")
+            
+        }
+        create("production") {
+            dimension = "default"
+            applicationIdSuffix = ".prod"
+            resValue("string", "app_name", "movie_app prod")
+        }
+    }
 }
 
 kotlin {
