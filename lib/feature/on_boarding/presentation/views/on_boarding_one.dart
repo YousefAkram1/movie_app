@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/utils/values/app_colors.dart';
-import '../../../../core/utils/values/app_routes.dart';
 import '../widgets/final_onBoard_item.dart';
 import '../widgets/movie_image_list_view.dart';
 
 class OnBoardingOne extends StatelessWidget {
-  const OnBoardingOne({super.key});
+  final VoidCallback onNext;
+  final VoidCallback onFirstTap;
+  final VoidCallback onSecondTap;
+
+  const OnBoardingOne({
+    super.key,
+    required this.onNext,
+    required this.onFirstTap,
+    required this.onSecondTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +24,14 @@ class OnBoardingOne extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 5, right: 18).w,
+              padding: EdgeInsets.only(top: 5.h, right: 18.w),
               child: Align(
-                alignment: AlignmentGeometry.topRight,
+                alignment: Alignment.topRight,
                 child: Text(
-                  "Skip",
+                  'Skip',
                   style: TextStyle(
                     fontSize: 16.sp,
-                    fontWeight: FontWeight(400),
+                    fontWeight: FontWeight.w400,
                     color: AppColors.textColor,
                   ),
                 ),
@@ -35,33 +44,33 @@ class OnBoardingOne extends StatelessWidget {
             SizedBox(height: 98.h),
             Center(
               child: Text(
-                "    Tell us about your \nfavorite movie genres",
+                'Tell us about your\nfavorite movie genres',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20.sp,
-                  fontWeight: FontWeight(500),
+                  fontWeight: FontWeight.w500,
                   color: Colors.white,
                 ),
               ),
             ),
             SizedBox(height: 54.h),
-            TextButton(
-              style: ButtonStyle(
-                fixedSize: WidgetStatePropertyAll(Size(340.w, 53.h)),
-                shape: WidgetStatePropertyAll(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16).r,
+            SizedBox(
+              width: 340.w,
+              height: 53.h,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.r),
                   ),
                 ),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.onBoardingTwo);
-              },
-              child: Text(
-                "Next",
-                style: TextStyle(
-                  fontWeight: FontWeight(600),
-                  fontSize: 18,
-                  color: Colors.white,
+                onPressed: onNext,
+                child: Text(
+                  'Next',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18.sp,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -69,6 +78,8 @@ class OnBoardingOne extends StatelessWidget {
             FinalOnBoardItem(
               firstColor: AppColors.secondary,
               secondColor: AppColors.semiBlack,
+              onFirstTap: onFirstTap,
+              onSecondTap: onSecondTap,
             ),
           ],
         ),

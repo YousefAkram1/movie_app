@@ -13,6 +13,7 @@ import 'package:movie_app/feature/home/presentation/cubit/home_cubit/movie_list_
 import 'package:movie_app/feature/home/presentation/cubit/search_cubit/movie_search_cubit.dart';
 import 'package:movie_app/feature/on_boarding/presentation/views/on_boardin_two.dart';
 import 'package:movie_app/feature/on_boarding/presentation/views/on_boarding_one.dart';
+import 'package:movie_app/feature/on_boarding/presentation/views/on_boarding_page_view.dart';
 import 'package:movie_app/injectable.dart';
 
 class MovieApp extends StatelessWidget {
@@ -39,13 +40,37 @@ class MovieApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: lightTheme,
             routes: {
-              AppRoutes.onBoardingOne: (context) => OnBoardingOne(),
-              AppRoutes.onBoardingTwo: (context) => OnBoardingTwo(),
+              AppRoutes.onBoardingOne: (context) => OnBoardingOne(
+                onNext: () {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    AppRoutes.onBoardingTwo,
+                  );
+                },
+                onFirstTap: () {},
+                onSecondTap: () {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    AppRoutes.onBoardingTwo,
+                  );
+                },
+              ),
+
+              AppRoutes.onBoardingTwo: (context) => OnBoardingTwo(
+                onFirstTap: () {
+                  Navigator.pushReplacementNamed(
+                    context,
+                    AppRoutes.onBoardingOne,
+                  );
+                },
+                onSecondTap: () {},
+              ),
+
               AppRoutes.signIn: (context) => SignIn(),
               AppRoutes.signUp: (context) => SignUp(),
               AppRoutes.signUpSuccess: (context) => SignUpSuccess(),
             },
-            home: OnBoardingOne(),
+            home: OnBoardingPageView(),
           ),
         );
       },

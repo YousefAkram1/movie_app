@@ -33,11 +33,14 @@ class MovieCard extends StatelessWidget {
                   Positioned.fill(
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(36.r),
-                      child: Image.network(
-                        'https://image.tmdb.org/t/p/w500${movie.image}',
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) =>
-                            Container(color: Colors.red),
+                      child: Hero(
+                        tag: movie.id,
+                        child: Image.network(
+                          'https://image.tmdb.org/t/p/w500${movie.image}',
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, __, ___) =>
+                              Container(color: Colors.red),
+                        ),
                       ),
                     ),
                   ),

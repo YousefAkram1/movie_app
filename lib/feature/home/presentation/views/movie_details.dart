@@ -44,6 +44,7 @@ class _MovieDetailsViewState extends State<MovieDetailsView> {
             return Stack(
               children: [
                 PosterImage(
+                  id: state.movie.id,
                   poster: 'https://image.tmdb.org/t/p/w500${state.movie.image}',
                 ),
 

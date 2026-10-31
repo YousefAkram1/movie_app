@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/utils/values/app_colors.dart';
 import '../../../../core/utils/values/app_routes.dart';
 import '../widgets/chip_items.dart';
 import '../widgets/final_onBoard_item.dart';
 
 class OnBoardingTwo extends StatelessWidget {
-  const OnBoardingTwo({super.key});
+  final VoidCallback onFirstTap;
+  final VoidCallback onSecondTap;
+
+  const OnBoardingTwo({
+    super.key,
+    required this.onFirstTap,
+    required this.onSecondTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +24,14 @@ class OnBoardingTwo extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 5, right: 18).w,
+                padding: EdgeInsets.only(top: 5.h, right: 18.w),
                 child: Align(
-                  alignment: AlignmentGeometry.topRight,
+                  alignment: Alignment.topRight,
                   child: Text(
-                    "Skip",
+                    'Skip',
                     style: TextStyle(
                       fontSize: 16.sp,
-                      fontWeight: FontWeight(400),
+                      fontWeight: FontWeight.w400,
                       color: AppColors.textColor,
                     ),
                   ),
@@ -31,62 +39,64 @@ class OnBoardingTwo extends StatelessWidget {
               ),
               SizedBox(height: 164.h),
               ChipsItems(
-                chip1: "Action",
-                chip2: "Adventure",
-                chip3: "Adventure",
-                chip4: "Drama",
+                chip1: 'Action',
+                chip2: 'Adventure',
+                chip3: 'Animation',
+                chip4: 'Drama',
               ),
               ChipsItems(
-                chip1: "Comedy",
-                chip2: "Crime",
-                chip3: "Documentary",
-                chip4: "Sports",
+                chip1: 'Comedy',
+                chip2: 'Crime',
+                chip3: 'Documentary',
+                chip4: 'Sports',
                 chip2Color: AppColors.secondary,
               ),
               ChipsItems(
-                chip1: "Fantasy",
-                chip2: "Horhor",
-                chip3: "Music",
-                chip4: "Western",
+                chip1: 'Fantasy',
+                chip2: 'Horror',
+                chip3: 'Music',
+                chip4: 'Western',
                 chip3Color: AppColors.secondary,
               ),
               ChipsItems(
-                chip1: "Horhor",
-                chip2: "Thriller",
-                chip3: "Sci-fi",
+                chip1: 'Mystery',
+                chip2: 'Thriller',
+                chip3: 'Sci-fi',
+                chip4: 'Romance',
                 chip1Color: AppColors.secondary,
               ),
-              SizedBox(height: 204.h),
-
+              SizedBox(height: 100.h),
               Center(
                 child: Text(
-                  "Select thr genres you\n      like to watch",
+                  'Select the genres you\nlike to watch',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.sp,
-                    fontWeight: FontWeight(500),
+                    fontWeight: FontWeight.w500,
                     color: Colors.white,
                   ),
                 ),
               ),
               SizedBox(height: 54.h),
-              TextButton(
-                style: ButtonStyle(
-                  fixedSize: WidgetStatePropertyAll(Size(340.w, 53.h)),
-                  shape: WidgetStatePropertyAll(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16).r,
+              SizedBox(
+                width: 340.w,
+                height: 53.h,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.r),
                     ),
                   ),
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, AppRoutes.signIn);
-                },
-                child: Text(
-                  "Next",
-                  style: TextStyle(
-                    fontWeight: FontWeight(600),
-                    fontSize: 18,
-                    color: Colors.white,
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, AppRoutes.signIn);
+                  },
+                  child: Text(
+                    'Next',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18.sp,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -94,7 +104,10 @@ class OnBoardingTwo extends StatelessWidget {
               FinalOnBoardItem(
                 firstColor: AppColors.semiBlack,
                 secondColor: AppColors.secondary,
+                onFirstTap: onFirstTap,
+                onSecondTap: onSecondTap,
               ),
+              SizedBox(height: 16.h),
             ],
           ),
         ),
